@@ -1,15 +1,18 @@
 from KafkaComponents import Kafka_Producer
+from time import sleep
+
+kfpro = Kafka_Producer(topic="testing")
 
 
-kfpro = Kafka_Producer(topic="diet")
+def iter():
 
+    for j in range(100):
+        print("Iteration", j)
+        data = {'counter': j}
 
-def Food(input=""):
-
-    data = input
-
-    kfpro.publish_message(data)
+        kfpro.publish_message(data)
+        sleep(0.5)
 
 
 if __name__ == "__main__":
-    Food(input="Rice")
+    iter()
